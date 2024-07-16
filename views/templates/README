@@ -1,0 +1,3 @@
+La carpeta index es donde se realizaran las pruebas con el labview, para las trasnferencia de datos. 
+Si se requiere utilizar el nombre de index en otro archivo, se puede modificar el nombre del mismo 
+index, pero se debe cambiar el nombre del render_template en routes/routes.py.

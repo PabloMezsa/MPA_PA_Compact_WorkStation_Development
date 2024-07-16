@@ -1,0 +1,1 @@
+SENSOR_VARIABLES = "Received message from client: Level: {} Flow: {} Pressure: {} Temperature: {}"
