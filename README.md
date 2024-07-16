@@ -3,8 +3,8 @@ Repositorio de Pruebas de Comunicacion en Tiempo Real con la Estacion de Festo M
 
 Recomendación.
 
-- Crear la maquina virtual en la misma ruta de las 3 carpetas.
+- Crear la maquina virtual.
 - Instalar los paquetes con este comando.
-    pip install -r .\requirements.txt
+    * pip install -r .\requirements.txt
   
-Nota: hacerlos dentro de la maquina virtual.
+Nota: hacerlo dentro de la misma ruta de las 3 carpetas.
