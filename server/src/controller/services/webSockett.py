@@ -9,7 +9,7 @@ def handle_connect():
     
 @socketio.on('message_from_client_labview')
 def handle_message(message):
-    print(SENSOR_VARIABLES.format(message[0],message[1], message[2], message[3]))
+    print(SENSOR_VARIABLES.format(message['level'],message['flow'], message['pressure'], message['temperature']))
 
 @socketio.on('message_from_client_web_site')
 def handle_message(message):

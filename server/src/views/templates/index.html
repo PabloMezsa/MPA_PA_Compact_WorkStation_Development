@@ -48,7 +48,11 @@
     </script>
 </head>
 <body>
-    <h1>WebSocket Example</h1>
+    <h1>
+        {% block title%}
+            {{ title }}
+        {% endblock %}
+    </h1>
     <button onclick="sendMessage()">Send Message</button>
     <h2>Messages</h2>
     <ul id="messages">

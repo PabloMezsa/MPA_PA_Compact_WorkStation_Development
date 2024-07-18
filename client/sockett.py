@@ -21,16 +21,18 @@ def main_2():
     
     @sio.event
     def message_from_server_to_client_labview(data):
-        global received_message
+        nonlocal received_message
         received_message = data['status']
         print('Message from server:', data)
-
-def main_5():
+    
     return received_message
 
-def main_6():
-    global received_message
-    received_message = False
+# def main_5():
+#     return received_message
+
+# def main_6():
+#     global received_message
+#     received_message = False
 
 def main_3(level, flow, pressure, temperature):
 
