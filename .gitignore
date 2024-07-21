@@ -1,6 +1,6 @@
 MPS_PA/
 
-.env
+server/src/.env
 
 __pycache__/
 *.py[cod]
