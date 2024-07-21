@@ -7,10 +7,10 @@ def mysql_connect_db(app):
         
         connection = mysql.connector.connect(
 
-            MYSQL_USER = app.config['MYSQL_USER'],
-            MYSQL_HOST = app.config['MYSQL_HOST'],
-            MYSQL_PASSWORD = app.config['MYSQL_PASSWORD'],
-            MYSQL_DB =  app.config['MYSQL_DB']  
+            user = app.config['MYSQL_USER'],
+            host = app.config['MYSQL_HOST'],
+            password = app.config['MYSQL_PASSWORD'],
+            database =  app.config['MYSQL_DB']  
 
         )
 
@@ -18,7 +18,7 @@ def mysql_connect_db(app):
             db_Info = connection.get_server_info()
             print("Connected to MySQL Server version ", db_Info)
             cursor = connection.cursor()
-            cursor.execute("select database();")
+            cursor.execute("SELECT DATABASE();")
             record = cursor.fetchone()
             print("You're connected to database: ", record)
 

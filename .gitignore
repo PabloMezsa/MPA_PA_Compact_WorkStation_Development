@@ -1,4 +1,6 @@
 MPS_PA/
 
+.env
+
 __pycache__/
 *.py[cod]

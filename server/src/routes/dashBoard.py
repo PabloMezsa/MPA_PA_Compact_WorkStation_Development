@@ -1,11 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 
-dashBoard_scope = Blueprint("dashBoard",__name__)
+dashBoard_scope = Blueprint("dashboard",__name__)
 
 # dashBoard route
 
-@dashBoard_scope.route('/dashBoard')
+@dashBoard_scope.route('/')
 
 def dashBoard():
 
-    return ""
+    return jsonify({'Message':'Welcome to DashBoard'})

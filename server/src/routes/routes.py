@@ -26,7 +26,7 @@ def closed_loop_control():
 
 def set_up():
 
-    pass
+    return "hello world"
 
 @home_scope.route('/language')
 
