@@ -1,1 +1,1 @@
-from .connection.connection_db import mysql_connect_db
+from .connection.connection_db import connection
