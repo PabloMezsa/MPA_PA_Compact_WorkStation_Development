@@ -6,20 +6,17 @@ api_user_scope = Blueprint("api_user", __name__)
 
 con_user = Usercontroller()
 
-@api_user_scope.route('/userList', methods=['GET'])
+@api_user_scope.route('/consultUsers', methods=['GET'])
 @cross_origin()
 
-def user_list():
-   # con_user.c_consult_users()
-   return "Hello"
+def consult_users():
+   return con_user.c_consult_users()
 
 @api_user_scope.route('/createUser', methods=['POST'])
 @cross_origin() 
 
 def create_user():
-   info = request.json
-   print("bien")
-   return con_user.c_create_user(info)
+   return con_user.c_create_user(request.json)
 
 @api_user_scope.route('/consultUserId', methods=['GET','POST'])
 @cross_origin() 

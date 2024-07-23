@@ -1,25 +1,19 @@
 from flask import jsonify, request
 from ..models import Users, User_model
 
+get_users = User_model()
+
 class Usercontroller():
     
     def c_consult_users(self):
-        query = "mod_usuario.m_consultar_usuarios()"
+
+        query = get_users.m_consult_users()
         return query
 
     def c_create_user(self, info):
        
-        post = Users(userName=info['userName'],
-                         name=info['name'],
-                         lastName=info['lastName'],
-                         number=info['number'],
-                         email=info['email'],
-                         identification=info['identification'],
-                         profile=info['profileId'],
-                         password=info['userPassword'])
-        
-        query = post.postUser()
-                                      
+        post_user = Users.build_user_info(info)
+        query = post_user.postUser()                             
         return query
 
     def c_consult_users_id(self):
