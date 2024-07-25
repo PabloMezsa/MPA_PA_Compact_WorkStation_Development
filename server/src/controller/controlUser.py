@@ -8,7 +8,13 @@ class Usercontroller():
     def c_consult_users(self):
 
         query = get_users.m_consult_users()
-        return query
+
+        if not query:
+            return jsonify({'Message':'There are not register'})
+        elif isinstance(query,BaseException):
+            return jsonify({"information": str(query)}), 500
+        else:
+            return jsonify({'Users':query}), 201
 
     def c_create_user(self, info):
        
@@ -16,14 +22,34 @@ class Usercontroller():
         query = post_user.postUser()                             
         return query
 
-    def c_consult_users_id(self):
-        query = "mod_usuario.m_consultar_usuario_id()"
-        return query
+    def c_consult_users_id(self, _id):
 
-    def c_update_user_id(self):
-        query = "mod_usuario.m_actualizar_usuario()"
-        return query
+        query = get_users.m_consult_user_id(_id)
 
-    def c_delete_user(self):
-        query = "mod_usuario.m_bajar_usuario()"
-        return query
+        if query is None:
+            return jsonify({'Message':'There are not register'})
+        elif isinstance(query,BaseException):
+            return jsonify({"information": str(query)}), 500
+        else:
+            return jsonify({'User':query}), 201
+
+    def c_update_user_id(self, _id, info):
+
+        verify = get_users.m_consult_user_id(_id)
+        
+        if verify is not None:
+            update_user = Users.build_user_info(info)
+            query = update_user.updateUser() 
+            return query
+        else:
+            return jsonify({'Message':'User not register'})
+
+    def c_delete_user(self, _id):
+
+        verify = get_users.m_consult_user_id(_id)
+        
+        if verify is None:
+            return jsonify({'Message':'User not register'})
+        else:
+            query = get_users.m_delete_user(_id)
+            return query     

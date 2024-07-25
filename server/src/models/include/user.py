@@ -37,3 +37,7 @@ class Users():
    
         return mod_create_user.m_create_user(self.__userName, self.__name, self.__lastName, self.__number, self.__email, self.__identification, self.__profile, self.__password)  
     
+    def updateUser(self):
+   
+        return mod_create_user.m_uptade_user(self.__userName, self.__name, self.__lastName, self.__number, self.__email, self.__identification, self.__profile, self.__password)
+    

@@ -18,23 +18,20 @@ def consult_users():
 def create_user():
    return con_user.c_create_user(request.json)
 
-@api_user_scope.route('/consultUserId', methods=['GET','POST'])
+@api_user_scope.route('/consultUserId/<_id>', methods=['GET'])
 @cross_origin() 
 
-def consult_user_id():
-   #info = request.json
-   return con_user.c_consult_users_id()
+def consult_user_id(_id):
+   return con_user.c_consult_users_id(_id)
 
-@api_user_scope.route('/updateUser', methods=['POST'])
+@api_user_scope.route('/updateUser/<_id>', methods=['PUT'])
 @cross_origin() 
 
-def update_user():
-   info = request.json
-   return con_user.c_update_user_id()
+def update_user(_id):
+   return con_user.c_update_user_id(_id, request.json)
 
-@api_user_scope.route('/deleteUser', methods=['POST'])
+@api_user_scope.route('/deleteUser/<_id>', methods=['DELETE'])
 @cross_origin() 
 
-def delete_user():
-   #info = request.json
-   return con_user.c_delete_user()
+def delete_user(_id):
+   return con_user.c_delete_user(_id)

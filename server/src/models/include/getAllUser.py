@@ -1,5 +1,3 @@
-from flask import jsonify
-
 class All_users():
 
     def __init__(self, _id, userName, name, lastName, number, email, identification, profile, password): 
