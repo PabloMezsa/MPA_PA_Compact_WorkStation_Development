@@ -3,14 +3,14 @@ from ..models import Users, User_model
 
 get_users = User_model()
 
-class Usercontroller():
+class User_controller():
     
     def c_consult_users(self):
 
         query = get_users.m_consult_users()
 
         if not query:
-            return jsonify({'Message':'There are not register'})
+            return jsonify({'Message':'There is not register'})
         elif isinstance(query,BaseException):
             return jsonify({"information": str(query)}), 500
         else:
@@ -27,7 +27,7 @@ class Usercontroller():
         query = get_users.m_consult_user_id(_id)
 
         if query is None:
-            return jsonify({'Message':'There are not register'})
+            return jsonify({'Message':'There is not register'})
         elif isinstance(query,BaseException):
             return jsonify({"information": str(query)}), 500
         else:
@@ -42,14 +42,14 @@ class Usercontroller():
             query = update_user.updateUser() 
             return query
         else:
-            return jsonify({'Message':'User not register'})
+            return jsonify({'Message':'Unregistered user'})
 
     def c_delete_user(self, _id):
 
         verify = get_users.m_consult_user_id(_id)
         
         if verify is None:
-            return jsonify({'Message':'User not register'})
+            return jsonify({'Message':'Unregistered user'})
         else:
             query = get_users.m_delete_user(_id)
             return query     

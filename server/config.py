@@ -6,7 +6,7 @@ class Config:
 class DevelopmentConfig(Config):
 
     DEBUG = True
-    # SERVER_NAME = 'localhost:5000'
+    SERVER_NAME = 'localhost:5000'
     # HOST = '0.0.0.0'
     # PORT = 5000
 

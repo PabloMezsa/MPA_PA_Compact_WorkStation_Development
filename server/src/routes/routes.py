@@ -45,3 +45,9 @@ def information():
 def login():
 
     pass
+
+@home_scope.route('/logout')
+
+def logout():
+
+    pass

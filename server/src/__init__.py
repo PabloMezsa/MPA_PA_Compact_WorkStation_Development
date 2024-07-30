@@ -1,7 +1,7 @@
 from flask import Flask
 from .controller import socketio
 from .routes import dashBoard_scope, home_scope, error_scope, api_user_scope
-from .database import connection
+#from .database import Connector
 
 app = Flask(__name__, template_folder="views/templates", static_folder='views/static')
 
@@ -18,8 +18,5 @@ def init__app(config):
 
     # flask-socket.IO configuration
     socketio.init_app(app)
-
-    # mysql-connect configuration and connection
-    connection
 
     return app

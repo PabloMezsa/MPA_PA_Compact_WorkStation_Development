@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
 from flask_cors import  cross_origin
-from ..controller import Usercontroller
+from ..controller import User_controller
 
 api_user_scope = Blueprint("api_user", __name__)
 
-con_user = Usercontroller()
+con_user = User_controller()
 
 @api_user_scope.route('/consultUsers', methods=['GET'])
 @cross_origin()
