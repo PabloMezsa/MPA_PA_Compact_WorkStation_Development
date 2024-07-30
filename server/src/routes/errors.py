@@ -24,7 +24,7 @@ def Method_Not_Allowed(e):
 
 @error_scope.app_errorhandler(500)
 
-def Internal_Server_PError(e):
+def Internal_Server_Error(e):
 
     #error = {"mesage":"error"}
     return jsonify(error=str(e)), 500

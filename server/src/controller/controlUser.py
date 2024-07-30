@@ -42,14 +42,14 @@ class User_controller():
             query = update_user.updateUser() 
             return query
         else:
-            return jsonify({'Message':'Unregistered user'})
+            return jsonify({'Message':'Unregistered user'}), 404
 
     def c_delete_user(self, _id):
 
         verify = get_users.m_consult_user_id(_id)
         
         if verify is None:
-            return jsonify({'Message':'Unregistered user'})
+            return jsonify({'Message':'Unregistered user'}), 404
         else:
             query = get_users.m_delete_user(_id)
             return query     
