@@ -33,23 +33,23 @@ class User_model():
         except Exception:
             return None
 
-    def m_create_user(self, userName, name, lastName, number, email, identification, profile, password):
+    def m_create_user(self, username, email, profile, password):
         try:
             cursor = db.connection.cursor()
-            cursor.execute("""INSERT INTO users (userName, name, lastName, number, email, identification, profileId, userPassword)
-                              VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",(userName, name, lastName, number, email, identification, profile, password))
+            cursor.execute("""INSERT INTO users (username, email, profileId, password)
+                              VALUES (%s,%s,%s,%s)""",(username, email, profile, password))
             db.connection.commit()
             cursor.close()
             return jsonify({"Information": "Ok"}), 201
         except Error as e:
             return jsonify({"Information": str(e)}), 500
     
-    def m_uptade_user(self, userName, name, lastName, number, email, identification, profile, password):
+    def m_uptade_user(self, username, email, profile, password):
     
         try: 
             cursor = db.connection.cursor()
-            cursor.execute("""UPDATE users SET userName = %s, name = %s, lastName = %s, number = %s, email = %s, identification = %s, 
-                              profileId = %s, userPassword = %s""",(userName, name, lastName, number, email, identification, profile, password))
+            cursor.execute("""UPDATE users SET username = %s, email = %s, profileId = %s, 
+                              password = %s""",(username, email, profile, password))
             db.connection.commit()
             cursor.close()
             return ({"Message":"User Has been Updated"}), 201

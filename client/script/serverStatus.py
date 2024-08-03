@@ -5,6 +5,7 @@ sio = socketio.Client()
 def server_connect():
     
     sio.connect('http://localhost:5000')
+    #172.16.21.5:5000
 
     # @sio.event
     # def connect():

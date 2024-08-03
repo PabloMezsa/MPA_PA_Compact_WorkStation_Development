@@ -6,10 +6,10 @@ db = Connector()
 
 class Login_model():
 
-    def m_check_user_authentication(self, userName, email):
+    def m_check_user_authentication(self, username):
         try:
             cursor = db.connection.cursor()
-            cursor.execute("""SELECT * from users WHERE userName = %s and email = %s""",(userName, email))
+            cursor.execute("""SELECT * from users WHERE username = %s""",(username,))
             data = cursor.fetchone()
             cursor.close()
             return data
@@ -20,7 +20,7 @@ class Login_model():
 
         try:
             cursor = db.connection.cursor(dictionary=True)
-            cursor.execute("SELECT roleProfile FROM profiles_roles WHERE id = %s", (role_id,))
+            cursor.execute("SELECT roleProfile FROM profiles_roles WHERE id = %s",(role_id,))
             role = cursor.fetchone()
             cursor.close()
             return role['roleProfile'] if role else None

@@ -14,37 +14,26 @@
         }
 
         var socket = io.connect('http://' + document.domain + ':' + location.port);
+        var deviceState = 'off'
 
         socket.on('connect', function() {
             console.log('Connected to server');
         });
 
         function sendMessage() {
-            var message = "Hello, server!";
-            socket.emit('message_from_client_web_site', message);
-            console.log('Sent message to server:', message);
+            deviceState = (deviceState === 'off') ? 'on' : 'off';
+            socket.emit('toggle_device', { state: deviceState });           
         }
 
-        socket.on('message_from_server', function(message) {
-            console.log('Received message from server:', message);
+        function sendMessage_2() {
+            deviceState = 'clc';
+            socket.emit('closed_loop_control', { state: deviceState });           
+        }
+
+        socket.on('device_status', function(data) {
+            console.log('Device status:', data.status);
         });
 
-        socket.on('new_message', function(message) {
-            var messagesList = document.getElementById('messages');
-            var newMessage = document.createElement('li');
-            newMessage.textContent = message;
-            messagesList.appendChild(newMessage);
-        });
-
-        socket.on('initial_messages', function(messages) {
-            var messagesList = document.getElementById('messages');
-            messagesList.innerHTML = '';
-            for (var i = 0; i < messages.length; i++) {
-                var messageItem = document.createElement('li');
-                messageItem.textContent = messages[i];
-                messagesList.appendChild(messageItem);
-            }
-        });
     </script>
 </head>
 <body>
@@ -54,6 +43,8 @@
         {% endblock %}
     </h1>
     <button onclick="sendMessage()">Send Message</button>
+    <br>
+    <button onclick="sendMessage_2()">Send Message</button>
     <h2>Messages</h2>
     <ul id="messages">
         <!-- Mensajes se agregarán aquí -->

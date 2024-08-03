@@ -1,0 +1,3 @@
+En esta carpeta, se creara los script que se usaran para cada evento que se ejecutara en cada nodo de labview. Esto servira como cliente de parte de labview, para la comunicacion
+que habra con el servidor creado por flask-socketio, ademas de que permitira operar la estacion MPS PA Compact WorkStation de forma remota, ya sea localmente o externamente si lle
+-gara el caso. Por ende se establecio de esta forma para aprovechar las funcionalidades de los bloques de conectividad que ofrece labview con la integracion de python.

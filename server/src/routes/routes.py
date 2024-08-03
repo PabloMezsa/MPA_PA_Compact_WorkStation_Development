@@ -10,8 +10,7 @@ con_login = Login_controller()
 @cross_origin()
 
 def home(title='WebSocket Example U'):
-
-    
+   
     return render_template('index.html', title=title)
 
 
@@ -20,7 +19,7 @@ def home(title='WebSocket Example U'):
 
 def measuring_and_control():
 
-    pass
+    return render_template('index_2.html')
 
 @home_scope.route('/closedLoopControl')
 @cross_origin()
@@ -65,5 +64,7 @@ def logout():
     user = session['userName']
     session.pop('rolSA', None)
     session.pop('userName', None)
+
+    print(f"Message User {user} get off session")
 
     return jsonify({"Message":f"User {user} get off session"})

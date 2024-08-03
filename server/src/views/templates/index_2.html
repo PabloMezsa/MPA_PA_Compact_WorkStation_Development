@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Live Video Feed</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Live Video Feed</h1>
+    <img id="video" width="640" height="480">
+    <script>
+        if (typeof io !== 'undefined') {
+            console.log('Socket.IO library loaded successfully');
+        } else {
+            console.error('Socket.IO library failed to load');
+        }
+
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        //const socket = io();
+
+        socket.on('video_frame', function(frame) {
+            const img = document.getElementById('video');
+            img.src = 'data:image/jpeg;base64,' + frame;
+        });
+    </script>
+</body>
+</html>

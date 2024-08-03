@@ -5,14 +5,10 @@ mod_create_user = User_model()
 
 class Users():
 
-    def __init__(self, userName, name, lastName, number, email, identification, profile, password):
+    def __init__(self, username, email, profile, password):
         
-        self.__userName = userName
-        self.__name = name
-        self.__lastName = lastName
-        self.__number = number
+        self.__username = username
         self.__email = email
-        self.__identification = identification
         self.__profile = profile
         self.__password = self.__create_password(password)
 
@@ -23,21 +19,17 @@ class Users():
     @classmethod
     def  build_user_info(cls, info):
         return cls(
-            userName=info['userName'],
-            name=info['name'],
-            lastName=info['lastName'],
-            number=info['number'],
+            username=info['username'],
             email=info['email'],
-            identification=info['identification'],
             profile=info['profileId'],
-            password=info['userPassword']
+            password=info['password']
         )      
 
     def postUser(self):
    
-        return mod_create_user.m_create_user(self.__userName, self.__name, self.__lastName, self.__number, self.__email, self.__identification, self.__profile, self.__password)  
+        return mod_create_user.m_create_user(self.__username, self.__email, self.__profile, self.__password)  
     
     def updateUser(self):
    
-        return mod_create_user.m_uptade_user(self.__userName, self.__name, self.__lastName, self.__number, self.__email, self.__identification, self.__profile, self.__password)
+        return mod_create_user.m_uptade_user(self.__username, self.__email, self.__profile, self.__password)
     

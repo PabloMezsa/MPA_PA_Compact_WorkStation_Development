@@ -22,6 +22,6 @@ def init__app(config):
 
     # CORS configuration
     CORS(app, resources={r"/*": {"origins": "*"}})  
-    #CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+    #CORS(app, resources={r"/*": {"origins": "http://172.16.19.114:5173"}})
 
     return app
