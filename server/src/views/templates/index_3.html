@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PID Control</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>PID Control</h1>
+    <label for="set_point">Set Point:</label>
+    <input type="range" id="set_point" min="0" max="10" step="0.001" value="0" oninput="sendPIDValues()">
+    <span id="set_point_value">0</span>
+    <br>
+    <label for="proportional">Proportional (P):</label>
+    <input type="range" id="proportional" min="0" max="100" step="0.001" value="0" oninput="sendPIDValues()">
+    <span id="proportional_value">0</span>
+    <br>
+    <label for="integral">Integral (I):</label>
+    <input type="range" id="integral" min="0" max="100" step="0.001" value="0" oninput="sendPIDValues()">
+    <span id="integral_value">0</span>
+    <br>
+    <label for="derivative">Derivative (D):</label>
+    <input type="range" id="derivative" min="0" max="100" step="0.001" value="0" oninput="sendPIDValues()">
+    <span id="derivative_value">0</span>
+    <br>
+
+    <script>
+        if (typeof io !== 'undefined') {
+            console.log('Socket.IO library loaded successfully');
+        } else {
+            console.error('Socket.IO library failed to load');
+        }
+
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        function sendPIDValues() {
+            const setPoint = parseFloat(document.getElementById('set_point').value);
+            const proportional = parseFloat(document.getElementById('proportional').value);
+            const integral = parseFloat(document.getElementById('integral').value);
+            const derivative = parseFloat(document.getElementById('derivative').value);
+
+            document.getElementById('set_point_value').innerText = setPoint;
+            document.getElementById('proportional_value').innerText = proportional;
+            document.getElementById('integral_value').innerText = integral;
+            document.getElementById('derivative_value').innerText = derivative;
+
+            socket.emit('pid_values', {
+                set_point: setPoint,
+                proportional: proportional,
+                integral: integral,
+                derivative: derivative
+            });
+
+            console.log('sp', setPoint, 'p', proportional, 'i', integral, 'd', derivative);
+        }
+    </script>
+</body>
+</html>

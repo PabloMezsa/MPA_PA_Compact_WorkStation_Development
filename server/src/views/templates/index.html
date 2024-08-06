@@ -27,7 +27,17 @@
 
         function sendMessage_2() {
             deviceState = 'clc';
-            socket.emit('closed_loop_control', { state: deviceState });           
+            socket.emit('Control_loop', { state: deviceState });           
+        }
+
+        function sendMessage_4() {
+            deviceState = 'Start';
+            socket.emit('Control_level', { state: deviceState });           
+        }
+
+        function sendMessage_5() {
+            deviceState = 'Stop';
+            socket.emit('Control_level', { state: deviceState });           
         }
 
         socket.on('device_status', function(data) {
@@ -45,6 +55,10 @@
     <button onclick="sendMessage()">Send Message</button>
     <br>
     <button onclick="sendMessage_2()">Send Message</button>
+    <br>
+    <button onclick="sendMessage_4()">Send Message</button>
+    <br>
+    <button onclick="sendMessage_5()">Send Message</button>
     <h2>Messages</h2>
     <ul id="messages">
         <!-- Mensajes se agregarán aquí -->

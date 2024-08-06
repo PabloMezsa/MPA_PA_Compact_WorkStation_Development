@@ -26,7 +26,7 @@ def measuring_and_control():
 
 def closed_loop_control():
 
-    pass
+    return render_template('index_3.html')
 
 @home_scope.route('/setUp')
 @cross_origin()
