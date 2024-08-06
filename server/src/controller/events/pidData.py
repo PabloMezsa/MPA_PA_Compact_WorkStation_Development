@@ -4,7 +4,7 @@ def control_process_data(socketio):
 
     @socketio.on('process_data', namespace="/")
     def handle_message(message):
-        print(message['set_point'],message['process_value'], message['control_value'])
+        print(message['process_value'], message['control_value'])
     
     
     @socketio.on('pid_values', namespace="/")

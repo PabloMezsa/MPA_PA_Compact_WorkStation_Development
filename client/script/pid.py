@@ -7,7 +7,7 @@ def process_value(set_point, process_value, control_value):
     if set_point is None or process_value is None or control_value is None:
         pass
     else:
-        pid_variables={'set_point':set_point, 'process_value':process_value, 'control_value':control_value}
+        pid_variables={'process_value':process_value, 'control_value':control_value}
         sio.emit('process_data', pid_variables)
 
 def pid_controller():

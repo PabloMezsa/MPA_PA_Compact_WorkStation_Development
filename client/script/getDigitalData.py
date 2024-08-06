@@ -1,16 +1,15 @@
 from serverStatus import sio
 
-def get_digital_data():
+received_message = None
 
-    received_message = None
+def get_digital_data():
 
     @sio.event
     def message_from_server_to_client_labview(data):
-        nonlocal received_message
+        global received_message
         received_message = data['status']
         print('Message from server:', data)
 
-    while received_message is None:
-        sio.sleep(0.1)
-    
+def pump():
+    global received_message
     return received_message
