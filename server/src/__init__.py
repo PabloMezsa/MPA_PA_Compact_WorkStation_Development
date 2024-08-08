@@ -18,10 +18,10 @@ def init__app(config):
     app.config.from_object(config)
 
     # flask-socket.IO configuration
-    socketio.init_app(app)
+    socketio.init_app(app, cors_allowed_origins='*')
 
     # CORS configuration
-    CORS(app, resources={r"/*": {"origins": "*"}})  
-    #CORS(app, resources={r"/*": {"origins": "http://172.16.19.114:5173"}})
+    #CORS(app, resources={r"/*": {"origins": "*"}})  
+    CORS(app, resources={r"/*": {"origins": "http://172.16.19.114:5173"}}, supports_credentials=True)
 
     return app

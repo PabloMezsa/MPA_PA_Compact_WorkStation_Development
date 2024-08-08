@@ -6,3 +6,6 @@ def analog_sensors(socketio):
     @socketio.on('message_from_client_labview', namespace="/")
     def handle_message(message):
         print(SENSOR_VARIABLES.format(message['level'],message['flow'], message['pressure'], message['temperature'], message['time']))
+        response = message
+
+        emit('sensor_variables', response, broadcast=True)

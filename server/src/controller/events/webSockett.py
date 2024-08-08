@@ -4,6 +4,7 @@ from .videoCamera import camera
 from .analogSensors import analog_sensors
 from .statusChange import status_change
 from .pidData import control_process_data
+from .analogActuators import analog_actuators
 
 socketio = SocketIO()
 
@@ -16,6 +17,7 @@ def test_disconnect():
     print('Client disconnected')
 
 digital_actuators(socketio)
+analog_actuators(socketio)
 analog_sensors(socketio)
 status_change(socketio)
 control_process_data(socketio)
